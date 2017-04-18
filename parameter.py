@@ -19,4 +19,7 @@ class Parameter:
         return self.unit
 
     def citation(self):
-        return self.citation
+        if isinstance(self.citation, str):
+            return self.citation
+        else:
+            return None
