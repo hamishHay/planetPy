@@ -21,6 +21,8 @@ class Body:
         self.pericenter = 0.0
         self.apocenter = 0.0
 
+        self.parent = None
+
         self.vals = {}
 
         if not isinstance(self.name,str):
@@ -84,7 +86,7 @@ class Star(Body):
         Body.__init__(self, name, "Star")
 
         self.planets = {}
-        self.planets_list = []
+        self.planet_list = []
 
     def addPlanet(self, planet):
         self.planets[planet.name] = planet
@@ -97,14 +99,14 @@ class Planet(Body):
     def __init__(self, name, parent=False):
         Body.__init__(self, name, "Planet")
 
-        if isinstance(parent,Star):
+        if isinstance(parent, Star):
             self.parent = parent
             parent.addPlanet(self)
 
         self.moons = {}
         self.moon_list = []
 
-    def addMoon(self,moon):
+    def addMoon(self, moon):
         self.moons[moon.name] = moon
         self.moon_list.append(moon)
 

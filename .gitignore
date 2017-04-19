@@ -137,3 +137,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+.idea/.name
+.idea/misc.xml
+*.xml
+.idea/planetPy.iml

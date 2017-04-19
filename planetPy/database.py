@@ -16,10 +16,9 @@ class Database:
         self.sun.setVal("Radius", 695700e3)
         self.stars.append(self.sun)
 
-
-        #------------------------------------------------
-        #-----------------DEFINE PLANETS-----------------
-        #------------------------------------------------
+        # -----------------------------------------------
+        # ----------------DEFINE PLANETS-----------------
+        # -----------------------------------------------
 
         self.mercury = Planet("Mercury", parent=self.sun)
         self.mercury.setVal("Radius", 2439.7e3)
@@ -84,71 +83,99 @@ class Database:
         self.pluto.setVal("Eccentricity", 0.2488)
         self.planets.append(self.pluto)
 
-        #------------------------------------------------
-        #----------------DEFINE SATELLITES---------------
-        #------------------------------------------------
+        # -----------------------------------------------
+        # ---------------DEFINE SATELLITES---------------
+        # -----------------------------------------------
 
         # EARTH
         self.moon = Moon("Moon", parent=self.earth)
         self.moon.setVal("Radius", 1737.1e3)
         self.moon.setVal("Mass", 7.34767309e22)
+        self.moon.setVal("Semimajor axis", 384399e3)
+        self.moon.setVal("Eccentricity", 0.0549)
 
         # MARS
         self.phobos = Moon("Phobos", parent=self.mars)
         self.phobos.setVal("Radius", 11.2667e3)
         self.phobos.setVal("Mass", 1.0659e16)
         self.phobos.setVal("Gravity", 5.7e-3)
+        self.phobos.setVal("Semimajor axis", 9376e3)
+        self.phobos.setVal("Eccentricity", 0.0151)
 
         self.deimos = Moon("Deimos", parent=self.mars)
         self.deimos.setVal("Radius", 6.2e3)
         self.deimos.setVal("Mass", 1.4762e15)
         self.deimos.setVal("Gravity", 3e-3)
+        self.deimos.setVal("Semimajor axis", 23463.2e3)
+        self.phobos.setVal("Eccentricity", 0.00033)
 
         # JUPITER
         self.io = Moon("Io", parent=self.jupiter)
         self.io.setVal("Radius", 1821.6e3)
         self.io.setVal("Mass", 8.931938e22)
+        self.io.setVal("Semimajor axis", 421800e3)
+        self.io.setVal("Eccentricity", 0.0041)
 
         self.europa = Moon("Europa", parent=self.jupiter)
         self.europa.setVal("Radius", 1560.8e3)
         self.europa.setVal("Mass", 4.799844e22)
+        self.europa.setVal("Semimajor axis", 671100e3)
+        self.europa.setVal("Eccentricity", 0.0094)
 
         self.ganymede = Moon("Ganymede", parent=self.jupiter)
         self.ganymede.setVal("Radius", 2634.1e3)
         self.ganymede.setVal("Mass", 1.4819e23)
+        self.ganymede.setVal("Semimajor axis", 1070400e3)
+        self.ganymede.setVal("Eccentricity", 0.0013)
 
         self.callisto = Moon("Callisto", parent=self.jupiter)
         self.callisto.setVal("Radius", 2410.3e3)
         self.callisto.setVal("Mass", 1.075938e23)
+        self.callisto.setVal("Semimajor axis", 1882700e3)
+        self.callisto.setVal("Eccentricity", 0.0074)
 
         # SATURN
         self.mimas = Moon("Mimas", parent=self.saturn)
         self.mimas.setVal("Radius", 198.2e3)
         self.mimas.setVal("Mass", 3.7493e19)
+        self.mimas.setVal("Semimajor axis", 185539e3)
+        self.mimas.setVal("Eccentricity", 0.0196)
 
         self.enceladus = Moon("Enceladus", parent=self.saturn)
         self.enceladus.setVal("Radius", 252.1e3)
         self.enceladus.setVal("Mass", 1.08022e20)
+        self.enceladus.setVal("Semimajor axis", 237948e3)
+        self.enceladus.setVal("Eccentricity", 0.0047)
 
         self.tethys = Moon("Tethys", parent=self.saturn)
         self.tethys.setVal("Radius", 531.1e3)
         self.tethys.setVal("Mass", 6.17449e20)
+        self.tethys.setVal("Semimajor axis", 294670e3)
+        self.tethys.setVal("Eccentricity", 0.0001)
 
         self.dione = Moon("Dione", parent=self.saturn)
         self.dione.setVal("Radius", 561.4e3)
         self.dione.setVal("Mass", 1.095452e21)
+        self.dione.setVal("Semimajor axis", 377396e3)
+        self.dione.setVal("Eccentricity", 0.0022)
 
         self.rhea = Moon("Rhea", parent=self.saturn)
         self.rhea.setVal("Radius", 763.8e3)
         self.rhea.setVal("Mass", 2.306518e21)
+        self.rhea.setVal("Semimajor axis", 527068e3)
+        self.rhea.setVal("Eccentricity", 0.0002)
 
         self.titan = Moon("Titan", parent=self.saturn)
         self.titan.setVal("Radius", 2575.5e3)
         self.titan.setVal("Mass", 1.3452e23)
+        self.titan.setVal("Semimajor axis", 1221865e3)
+        self.titan.setVal("Eccentricity", 0.0288)
 
         self.iapetus = Moon("Iapetus", parent=self.saturn)
         self.iapetus.setVal("Radius", 734.5e3)
         self.iapetus.setVal("Mass", 1.805635e21)
+        self.iapetus.setVal("Semimajor axis", 3560840e3)
+        self.iapetus.setVal("Eccentricity", 0.0283)
 
 
 if __name__ == "__main__":
