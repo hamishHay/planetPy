@@ -1,5 +1,5 @@
 
-from planetarypy import units
+from planetPy import units
 
 class Parameter:
     def __init__(self, name, val, unit=False, citation=False):

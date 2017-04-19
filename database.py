@@ -1,7 +1,7 @@
-from planetarypy.body import Star
-from planetarypy.body import Planet
-from planetarypy.body import Moon
-from planetarypy.constants import AU
+from planetPy.body import Star
+from planetPy.body import Planet
+from planetPy.body import Moon
+from planetPy.constants import AU
 
 class Database:
     def __init__(self):

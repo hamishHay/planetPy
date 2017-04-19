@@ -1,7 +1,7 @@
 # planet.py
 
-from planetarypy.parameter import Parameter
-from planetarypy.constants import G
+from planetPy.parameter import Parameter
+from planetPy.constants import G
 from numpy import pi, sqrt
 
 class Body:
@@ -27,7 +27,7 @@ class Body:
             raise TypeError("Planet name must be of type 'string'")
 
     def setVal(self, name, val, unit=False, citation=False):
-        self.vals[name] = Parameter(name, val, unit, citation)
+        # self.vals[name] = Parameter(name, val, unit, citation)
 
         if name == 'Mass':
             self.mass = val
@@ -58,35 +58,37 @@ class Body:
 
     def calcGravity(self):
         self.gravity = G*self.mass/self.radius**2.0
-        self.vals["Gravity"] = Parameter("Gravity", self.gravity, "m s^-2", False)
+        # self.vals["Gravity"] = Parameter("Gravity", self.gravity, "m s^-2", False)
 
     def calcDensity(self):
         self.density = self.mass / (4./3. * pi * self.radius**3)
-        self.vals["Density"] = Parameter("Density", self.density, "kg m^-3", False)
+        # self.vals["Density"] = Parameter("Density", self.density, "kg m^-3", False)
 
     def calcOrbitPeriod(self):
         self.orbit_period = 2.*pi * sqrt((self.semimajor_axis**3.)/(G*(self.parent.mass + self.mass)))
-        self.vals["Orbit period"] = Parameter("Orbit period", self.orbit_period, "s", False)
+        # self.vals["Orbit period"] = Parameter("Orbit period", self.orbit_period, "s", False)
 
         self.mean_motion = 2.*pi/self.orbit_period
-        self.vals["Mean motion"] = Parameter("Mean motion", self.mean_motion, "rad s^-1", False)
+        # self.vals["Mean motion"] = Parameter("Mean motion", self.mean_motion, "rad s^-1", False)
 
     def calcApocenter(self):
         self.apocenter = self.semimajor_axis * (1.0 - self.eccentricity)
-        self.vals["Apocenter"] = Parameter("Apocenter", self.apocenter, "m", False)
+        # self.vals["Apocenter"] = Parameter("Apocenter", self.apocenter, "m", False)
 
     def calcPericenter(self):
         self.pericenter = self.semimajor_axis * (1.0 + self.eccentricity)
-        self.vals["Pericenter"] = Parameter("Pericenter", self.pericenter, "m", False)
+        # self.vals["Pericenter"] = Parameter("Pericenter", self.pericenter, "m", False)
 
 class Star(Body):
     def __init__(self, name):
         Body.__init__(self, name, "Star")
 
         self.planets = {}
+        self.planets_list = []
 
     def addPlanet(self, planet):
         self.planets[planet.name] = planet
+        self.planet_list.append(planet)
 
     def __str__(self):
         return self.name
@@ -100,9 +102,11 @@ class Planet(Body):
             parent.addPlanet(self)
 
         self.moons = {}
+        self.moon_list = []
 
     def addMoon(self,moon):
         self.moons[moon.name] = moon
+        self.moon_list.append(moon)
 
     def __str__(self):
         return self.name
