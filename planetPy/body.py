@@ -38,7 +38,10 @@ class Body:
         elif name == "Gravity":
             self.gravity = val
         elif name == "Rotation period":
-            self.rotation_period = val
+            if val == "Synchronous":
+                self.rotation_period = self.orbit_period
+            else:
+                self.rotation_period = val
         elif name == "Semimajor axis":
             self.semimajor_axis = val
         elif name == "Eccentricity":
@@ -99,6 +102,9 @@ class Planet(Body):
     def __init__(self, name, parent=False):
         Body.__init__(self, name, "Planet")
 
+        if not parent:
+            raise ValueError("Planet " + name + " must have a parent star.")
+
         if isinstance(parent, Star):
             self.parent = parent
             parent.addPlanet(self)
@@ -116,6 +122,9 @@ class Planet(Body):
 class Moon(Body):
     def __init__(self, name, parent=False):
         Body.__init__(self, name, "Moon")
+
+        if not parent:
+            raise ValueError("Moon " + name + " must have a parent planet.")
 
         if isinstance(parent, Planet):
             self.parent = parent
