@@ -121,24 +121,31 @@ class Database:
         self.io.setVal("Rotation period", "Synchronous")
 
         self.europa = Moon("Europa", parent=self.jupiter)
-        self.europa.setVal("Radius", 1560.8e3)
+        self.europa.setVal("Radius", 1565.0e3)
         self.europa.setVal("Mass", 4.799844e22)
         self.europa.setVal("Semimajor axis", 671100e3)
         self.europa.setVal("Eccentricity", 0.0094)
+        self.europa.setVal("Obliquity", 0.053)
         self.europa.setVal("Rotation period", "Synchronous")
+        self.europa.mean_motion = 2.05e-5
+        self.europa.density = 2989.5
 
         self.ganymede = Moon("Ganymede", parent=self.jupiter)
-        self.ganymede.setVal("Radius", 2634.1e3)
+        self.ganymede.setVal("Radius", 2631.2e3)
         self.ganymede.setVal("Mass", 1.4819e23)
         self.ganymede.setVal("Semimajor axis", 1070400e3)
         self.ganymede.setVal("Eccentricity", 0.0013)
+        self.ganymede.setVal("Obliquity", 0.033)
         self.ganymede.setVal("Rotation period", "Synchronous")
+        self.ganymede.mean_motion = 1.02e-5
+        self.ganymede.density = 1942.1
 
         self.callisto = Moon("Callisto", parent=self.jupiter)
         self.callisto.setVal("Radius", 2410.3e3)
         self.callisto.setVal("Mass", 1.075938e23)
         self.callisto.setVal("Semimajor axis", 1882700e3)
         self.callisto.setVal("Eccentricity", 0.0074)
+        self.callisto.setVal("Obliquity", 0.24)
         self.callisto.setVal("Rotation period", "Synchronous")
 
         # SATURN
@@ -147,6 +154,7 @@ class Database:
         self.mimas.setVal("Mass", 3.7493e19)
         self.mimas.setVal("Semimajor axis", 185539e3)
         self.mimas.setVal("Eccentricity", 0.0196)
+        self.mimas.setVal("Obliquity", 0.041)
         self.mimas.setVal("Rotation period", "Synchronous")
 
         self.enceladus = Moon("Enceladus", parent=self.saturn)
@@ -154,13 +162,17 @@ class Database:
         self.enceladus.setVal("Mass", 1.08022e20)
         self.enceladus.setVal("Semimajor axis", 237948e3)
         self.enceladus.setVal("Eccentricity", 0.0047)
+        self.enceladus.setVal("Obliquity", 0.00045)
         self.enceladus.setVal("Rotation period", "Synchronous")
+        self.enceladus.mean_motion = 5.31e-5
+        self.enceladus.density = 1609.6
 
         self.tethys = Moon("Tethys", parent=self.saturn)
         self.tethys.setVal("Radius", 531.1e3)
         self.tethys.setVal("Mass", 6.17449e20)
         self.tethys.setVal("Semimajor axis", 294670e3)
         self.tethys.setVal("Eccentricity", 0.0001)
+        self.tethys.setVal("Obliquity", 0.039)
         self.tethys.setVal("Rotation period", "Synchronous")
 
         self.dione = Moon("Dione", parent=self.saturn)
@@ -168,28 +180,87 @@ class Database:
         self.dione.setVal("Mass", 1.095452e21)
         self.dione.setVal("Semimajor axis", 377396e3)
         self.dione.setVal("Eccentricity", 0.0022)
+        self.dione.setVal("Obliquity", 0.002)
         self.dione.setVal("Rotation period", "Synchronous")
+        self.dione.mean_motion = 2.66e-5
+        self.dione.density = 1478.0
 
         self.rhea = Moon("Rhea", parent=self.saturn)
         self.rhea.setVal("Radius", 763.8e3)
         self.rhea.setVal("Mass", 2.306518e21)
         self.rhea.setVal("Semimajor axis", 527068e3)
         self.rhea.setVal("Eccentricity", 0.0002)
+        self.rhea.setVal("Obliquity", 0.03)
         self.rhea.setVal("Rotation period", "Synchronous")
 
         self.titan = Moon("Titan", parent=self.saturn)
-        self.titan.setVal("Radius", 2575.5e3)
+        self.titan.setVal("Radius", 2574.7e3)
         self.titan.setVal("Mass", 1.3452e23)
         self.titan.setVal("Semimajor axis", 1221865e3)
         self.titan.setVal("Eccentricity", 0.0288)
+        self.titan.setVal("Obliquity", 0.32)
         self.titan.setVal("Rotation period", "Synchronous")
+        self.titan.mean_motion = 4.56e-6
+        self.titan.density = 1881.6
 
         self.iapetus = Moon("Iapetus", parent=self.saturn)
         self.iapetus.setVal("Radius", 734.5e3)
         self.iapetus.setVal("Mass", 1.805635e21)
         self.iapetus.setVal("Semimajor axis", 3560840e3)
         self.iapetus.setVal("Eccentricity", 0.0283)
+        self.iapetus.setVal("Obliquity", 0.0)
         self.iapetus.setVal("Rotation period", "Synchronous")
+
+        # URANUS
+        self.miranda = Moon("Miranda", parent=self.uranus)
+        self.miranda.setVal("Radius", 235.8e3)
+        self.miranda.setVal("Mass", 0.659e20)
+        self.miranda.setVal("Semimajor axis", 129800e3)
+        self.miranda.setVal("Eccentricity", 0.0013)
+        self.miranda.setVal("Obliquity", 0.021)
+        self.miranda.setVal("Rotation period", "Synchronous")
+
+        self.ariel = Moon("Ariel", parent=self.uranus)
+        self.ariel.setVal("Radius", 578.9e3)
+        self.ariel.setVal("Mass", 13.53e20)
+        self.ariel.setVal("Semimajor axis", 191200e3)
+        self.ariel.setVal("Eccentricity", 0.0012)
+        self.ariel.setVal("Obliquity", 0.00050)
+        self.ariel.setVal("Rotation period", "Synchronous")
+
+        self.umbriel = Moon("Umbriel", parent=self.uranus)
+        self.umbriel.setVal("Radius", 584.7e3)
+        self.umbriel.setVal("Mass", 11.72e20)
+        self.umbriel.setVal("Semimajor axis", 266000e3)
+        self.umbriel.setVal("Eccentricity", 0.0039)
+        self.umbriel.setVal("Obliquity", 0.0026)
+        self.umbriel.setVal("Rotation period", "Synchronous")
+
+        self.titania = Moon("Titania", parent=self.uranus)
+        self.titania.setVal("Radius", 788.9e3)
+        self.titania.setVal("Mass", 35.27e20)
+        self.titania.setVal("Semimajor axis", 435800e3)
+        self.titania.setVal("Eccentricity", 0.0011)
+        self.titania.setVal("Obliquity", 0.014)
+        self.titania.setVal("Rotation period", "Synchronous")
+
+        self.oberon = Moon("Oberon", parent=self.uranus)
+        self.oberon.setVal("Radius", 761.4e3)
+        self.oberon.setVal("Mass", 30.14e20)
+        self.oberon.setVal("Semimajor axis", 583600e3)
+        self.oberon.setVal("Eccentricity", 0.0014)
+        self.oberon.setVal("Obliquity", 0.075)
+        self.oberon.setVal("Rotation period", "Synchronous")
+
+        # NEPTUNE
+
+        self.triton = Moon("Triton", parent=self.neptune)
+        self.triton.setVal("Radius", 1353.4e3)
+        self.triton.setVal("Mass", 215.0e20)
+        self.triton.setVal("Semimajor axis", 354760e3)
+        self.triton.setVal("Eccentricity", 0.0004)
+        self.triton.setVal("Obliquity", 0.35)
+        self.triton.setVal("Rotation period", "Synchronous")
 
         # -----------------------------------------------
         # ---------------55-CANCRI SYSTEM----------------

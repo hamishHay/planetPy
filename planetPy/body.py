@@ -13,6 +13,7 @@ class Body:
         self.density = 0.0
         self.gravity = 0.0
         self.rotation_period = 0.0
+        self.obliquity = 0.0
 
         self.semimajor_axis = 0.0
         self.orbit_period = 0.0
@@ -46,6 +47,8 @@ class Body:
             self.semimajor_axis = val
         elif name == "Eccentricity":
             self.eccentricity = val
+        elif name == "Obliquity":
+            self.obliquity = val
 
         if self.mass != 0.0 and self.radius != 0.0:
             if self.gravity == 0.0:
