@@ -10,6 +10,8 @@ class Database:
         self.stars = []
         self.planets = []
         self.moons = []
+        self.moon_dict = {}
+        self.planet_dict = {}
 
         self.sun = Star("Sun")
         self.sun.setVal("Mass", 1.98855e30)
@@ -119,34 +121,44 @@ class Database:
         self.io.setVal("Semimajor axis", 421800e3)
         self.io.setVal("Eccentricity", 0.0041)
         self.io.setVal("Rotation period", "Synchronous")
+        self.io.setVal("Obliquity", 0.0021)
+        self.io.mean_motion = 2*2.05e-5
+
+        self.moon_dict[self.io.name] = self.io
 
         self.europa = Moon("Europa", parent=self.jupiter)
         self.europa.setVal("Radius", 1565.0e3)
         self.europa.setVal("Mass", 4.799844e22)
         self.europa.setVal("Semimajor axis", 671100e3)
         self.europa.setVal("Eccentricity", 0.0094)
-        self.europa.setVal("Obliquity", 0.053)
+        self.europa.setVal("Obliquity", 0.0550)
         self.europa.setVal("Rotation period", "Synchronous")
         self.europa.mean_motion = 2.05e-5
         self.europa.density = 2989.5
+
+        self.moon_dict[self.europa.name] = self.europa
 
         self.ganymede = Moon("Ganymede", parent=self.jupiter)
         self.ganymede.setVal("Radius", 2631.2e3)
         self.ganymede.setVal("Mass", 1.4819e23)
         self.ganymede.setVal("Semimajor axis", 1070400e3)
         self.ganymede.setVal("Eccentricity", 0.0013)
-        self.ganymede.setVal("Obliquity", 0.033)
+        self.ganymede.setVal("Obliquity", 0.031)
         self.ganymede.setVal("Rotation period", "Synchronous")
-        self.ganymede.mean_motion = 1.02e-5
+        self.ganymede.mean_motion = 2.05e-5*0.5
         self.ganymede.density = 1942.1
+
+        self.moon_dict[self.ganymede.name] = self.ganymede
 
         self.callisto = Moon("Callisto", parent=self.jupiter)
         self.callisto.setVal("Radius", 2410.3e3)
         self.callisto.setVal("Mass", 1.075938e23)
         self.callisto.setVal("Semimajor axis", 1882700e3)
         self.callisto.setVal("Eccentricity", 0.0074)
-        self.callisto.setVal("Obliquity", 0.24)
+        self.callisto.setVal("Obliquity", 0.145)
         self.callisto.setVal("Rotation period", "Synchronous")
+
+        self.moon_dict[self.callisto.name] = self.callisto
 
         # SATURN
         self.mimas = Moon("Mimas", parent=self.saturn)
@@ -156,6 +168,8 @@ class Database:
         self.mimas.setVal("Eccentricity", 0.0196)
         self.mimas.setVal("Obliquity", 0.041)
         self.mimas.setVal("Rotation period", "Synchronous")
+
+        self.moon_dict[self.mimas.name] = self.mimas
 
         self.enceladus = Moon("Enceladus", parent=self.saturn)
         self.enceladus.setVal("Radius", 252.1e3)
@@ -167,6 +181,8 @@ class Database:
         self.enceladus.mean_motion = 5.31e-5
         self.enceladus.density = 1609.6
 
+        self.moon_dict[self.enceladus.name] = self.enceladus
+
         self.tethys = Moon("Tethys", parent=self.saturn)
         self.tethys.setVal("Radius", 531.1e3)
         self.tethys.setVal("Mass", 6.17449e20)
@@ -174,6 +190,8 @@ class Database:
         self.tethys.setVal("Eccentricity", 0.0001)
         self.tethys.setVal("Obliquity", 0.039)
         self.tethys.setVal("Rotation period", "Synchronous")
+
+        self.moon_dict[self.tethys.name] = self.tethys
 
         self.dione = Moon("Dione", parent=self.saturn)
         self.dione.setVal("Radius", 561.4e3)
@@ -184,6 +202,8 @@ class Database:
         self.dione.setVal("Rotation period", "Synchronous")
         self.dione.mean_motion = 2.66e-5
         self.dione.density = 1478.0
+
+        self.moon_dict[self.dione.name] = self.dione
 
         self.rhea = Moon("Rhea", parent=self.saturn)
         self.rhea.setVal("Radius", 763.8e3)
@@ -277,11 +297,79 @@ class Database:
         self.exo_55_cancri_b.setVal("Semimajor axis", 0.11522725*AU)
         self.planets.append(self.exo_55_cancri_b)
 
+
         self.exo_55_cancri_e = Planet("55-cancri e", parent=self.exo_55_cancri_a)
         self.exo_55_cancri_e.setVal("Mass", 8.08*self.earth.mass)
         self.exo_55_cancri_e.setVal("Radius", 1.91*self.earth.radius)
         self.exo_55_cancri_e.setVal("Semimajor axis", 0.01544*AU)
         self.planets.append(self.exo_55_cancri_e)
+
+        # -----------------------------------------------
+        # ---------------TRAPPIST-1 SYSTEM---------------
+        # -----------------------------------------------
+
+        self.exo_trappist1_a= Star("Trappist-1 a")
+        self.exo_trappist1_a.setVal("Mass", 0.089*self.sun.mass)
+        self.exo_trappist1_a.setVal("Radius", 0.121*self.sun.radius)
+        self.stars.append(self.exo_trappist1_a)
+
+        self.exo_trappist1_b = Planet("Trappist-1 b", parent=self.exo_trappist1_a)
+        self.exo_trappist1_b.setVal("Mass", 1.07*self.earth.mass)
+        self.exo_trappist1_b.setVal("Radius", 1.21*self.earth.radius)
+        self.exo_trappist1_b.setVal("Semimajor axis",0.01154775*AU)
+        self.exo_trappist1_b.setVal("Eccentricity", 0.00622)
+        self.planets.append(self.exo_trappist1_b)
+        self.planet_dict[self.exo_trappist1_b.name] = self.exo_trappist1_b
+
+        self.exo_trappist1_c = Planet("Trappist-1 c", parent=self.exo_trappist1_a)
+        self.exo_trappist1_c.setVal("Mass", 1.156*self.earth.mass)
+        self.exo_trappist1_c.setVal("Radius", 1.095*self.earth.radius)
+        self.exo_trappist1_c.setVal("Semimajor axis", 0.01581512*AU)
+        self.exo_trappist1_c.setVal("Eccentricity", 0.00654)
+        self.planets.append(self.exo_trappist1_c)
+        self.planet_dict[self.exo_trappist1_c.name] = self.exo_trappist1_c
+
+        self.exo_trappist1_d = Planet("Trappist-1 d", parent=self.exo_trappist1_a)
+        self.exo_trappist1_d.setVal("Mass", 0.297*self.earth.mass)
+        self.exo_trappist1_d.setVal("Radius", 0.784*self.earth.radius)
+        self.exo_trappist1_d.setVal("Semimajor axis", 0.02228038*AU)
+        self.exo_trappist1_d.setVal("Eccentricity", 0.00837)
+        self.planets.append(self.exo_trappist1_d)
+        self.planet_dict[self.exo_trappist1_d.name] = self.exo_trappist1_d
+
+        self.exo_trappist1_e = Planet("Trappist-1 e", parent=self.exo_trappist1_a)
+        self.exo_trappist1_e.setVal("Mass", 0.772*self.earth.mass)
+        self.exo_trappist1_e.setVal("Radius", 0.910*self.earth.radius)
+        self.exo_trappist1_e.setVal("Semimajor axis", 0.02928285*AU)
+        self.exo_trappist1_e.setVal("Eccentricity", 0.00510)
+        self.planets.append(self.exo_trappist1_e)
+        self.planet_dict[self.exo_trappist1_e.name] = self.exo_trappist1_e
+
+        self.exo_trappist1_f = Planet("Trappist-1 f", parent=self.exo_trappist1_a)
+        self.exo_trappist1_f.setVal("Mass", 0.934*self.earth.mass)
+        self.exo_trappist1_f.setVal("Radius", 1.046*self.earth.radius)
+        self.exo_trappist1_f.setVal("Semimajor axis", 0.03853361*AU)
+        self.exo_trappist1_f.setVal("Eccentricity", 0.01007)
+        self.planets.append(self.exo_trappist1_f)
+        self.planet_dict[self.exo_trappist1_f.name] = self.exo_trappist1_f
+
+        self.exo_trappist1_g = Planet("Trappist-1 g", parent=self.exo_trappist1_a)
+        self.exo_trappist1_g.setVal("Mass", 1.148*self.earth.mass)
+        self.exo_trappist1_g.setVal("Radius", 1.148*self.earth.radius)
+        self.exo_trappist1_g.setVal("Semimajor axis",0.04687692*AU)
+        self.exo_trappist1_g.setVal("Eccentricity", 0.00208)
+        self.planets.append(self.exo_trappist1_g)
+        self.planet_dict[self.exo_trappist1_g.name] = self.exo_trappist1_g
+
+        self.exo_trappist1_h = Planet("Trappist-1 h", parent=self.exo_trappist1_a)
+        self.exo_trappist1_h.setVal("Mass", 0.331*self.earth.mass)
+        self.exo_trappist1_h.setVal("Radius", 0.773*self.earth.radius)
+        self.exo_trappist1_h.setVal("Semimajor axis", 0.06193488*AU)
+        self.exo_trappist1_h.setVal("Eccentricity", 0.00567)
+        self.planets.append(self.exo_trappist1_h)
+        self.planet_dict[self.exo_trappist1_h.name] = self.exo_trappist1_h
+
+
 
 if __name__ == "__main__":
 
